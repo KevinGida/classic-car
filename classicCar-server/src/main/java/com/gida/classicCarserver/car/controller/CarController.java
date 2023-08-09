@@ -3,12 +3,11 @@ package com.gida.classicCarserver.car.controller;
 import com.gida.classicCarserver.car.model.Car;
 import com.gida.classicCarserver.car.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @CrossOrigin
@@ -20,7 +19,27 @@ public class CarController {
 
     @GetMapping
     public List<Car> getAllCars() {
-    return carService.getAllCars();
-}
+    return carService.findALl();
+    }
 
+    @GetMapping("/{id}")
+    public Car getCarById(@PathVariable("id") UUID id) {
+        return carService.findById(id);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping
+    public Car newCar(@RequestBody Car car) {
+        return carService.create(car);
+    }
+
+    @PutMapping("/{id}")
+    public Car updateCar(@RequestBody Car car, @PathVariable("id") UUID id) {
+        return carService.update(car, id);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteCar(@PathVariable UUID id) {
+        carService.delete(id);
+    }
 }

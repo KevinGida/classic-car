@@ -13,12 +13,12 @@ public class CarService {
     CarRepository repository;
 
     //GET
-    public List<Car> getAllCars() {
+    public List<Car> findALl() {
         return repository.findAll();
     }
 
     //GET
-    public Car getCarById(UUID id) {
+    public Car findById(UUID id) {
         return repository.findById(id).get();
     }
 
@@ -27,6 +27,7 @@ public class CarService {
          return repository.save(car);
     }
 
+    //PUT
     public Car update(Car car, UUID id) {
         Car carToUpdate = repository.findById(id).get();
         carToUpdate.setManufacturer(car.getManufacturer());
@@ -43,6 +44,7 @@ public class CarService {
         return repository.save(carToUpdate);
     }
 
+    //DELETE
     public void delete(UUID id) {
         repository.deleteById(id);
     }
