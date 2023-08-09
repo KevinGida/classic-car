@@ -3,10 +3,12 @@ package com.gida.classicCarserver.car.service;
 import com.gida.classicCarserver.car.model.Car;
 import com.gida.classicCarserver.car.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class CarService {
 
     @Autowired
