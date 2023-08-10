@@ -16,7 +16,7 @@ import java.util.UUID;
 public class Car {
 
      @Id
-     @GeneratedValue(strategy = GenerationType.AUTO)
+     @GeneratedValue(strategy = GenerationType.UUID)
      private UUID id;
      private String manufacturer;
      private String model;
@@ -27,7 +27,8 @@ public class Car {
      private String origin;
      private int horsepower;
      private int price;
-     private int detail;
-     private boolean sold;
+     @Column(columnDefinition = "TEXT")
+     private String detail;
+     private boolean sold = false;
 
 }

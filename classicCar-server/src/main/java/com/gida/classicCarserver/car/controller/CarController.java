@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/")
+@RequestMapping("/cars")
 public class CarController {
 
     @Autowired
