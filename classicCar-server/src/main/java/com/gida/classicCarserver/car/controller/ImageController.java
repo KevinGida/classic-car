@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.zip.DataFormatException;
 
 
 @RestController
@@ -33,7 +32,7 @@ public class ImageController {
     public ResponseEntity<byte[]> downloadImage (@PathVariable("id") Long id) throws IOException {
         byte[] image = imageService.downloadImages(id);
         return ResponseEntity.status(HttpStatus.OK)
-                .contentType(MediaType.valueOf("image/png"))
+                .contentType(MediaType.valueOf("image/jpeg"))
                 .body(image);
     }
 
