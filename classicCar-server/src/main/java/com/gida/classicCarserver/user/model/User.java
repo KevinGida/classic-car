@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(schema = "user", name = "Users",
+@Table(schema = "userschema", name = "detail",
         uniqueConstraints = {
             @UniqueConstraint(columnNames = "username"),
             @UniqueConstraint(columnNames = "email")
@@ -22,7 +22,8 @@ import java.util.Set;
 @EqualsAndHashCode
 @ToString
 public class User {
-    @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank
     @Size(max = 20)
@@ -35,8 +36,15 @@ public class User {
     @Size(max = 20)
     private String password;
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "user_roles",
-        joinColumns = @JoinColumn(name = "user_id"),
-        inverseJoinColumns = @JoinColumn(name = "role_id"))
+//    @JoinTable(name = "user_roles",
+//        joinColumns = @JoinColumn(name = "user_id"),
+//        inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
+
+
+    public User(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
 }

@@ -1,9 +1,11 @@
 package com.gida.classicCarserver.user.model;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
-@Table(schema = "user", name = "Roles")
+@Table(schema = "userschema", name = "Roles")
 public enum ERole {
     ROLE_USER,
-    ROLE_ADMIN
+    ROLE_ADMIN,
+    ROLE_MODERATOR
 }

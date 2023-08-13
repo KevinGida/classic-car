@@ -1,5 +1,6 @@
 package com.gida.classicCarserver.user.security;
 
+import com.gida.classicCarserver.user.security.jwt.AuthEntryPointJwt;
 import com.gida.classicCarserver.user.security.jwt.AuthTokenFilter;
 import com.gida.classicCarserver.user.security.services.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
