@@ -1,9 +1,9 @@
 package com.gida.classicCarserver.user.payload.request;
 
 import jakarta.validation.constraints.*;
-import lombok.*;
-
 import java.util.Set;
+
+import lombok.*;
 
 @Getter
 @Setter
@@ -15,8 +15,8 @@ public class SignupRequest {
     @Size(max = 50)
     @Email
     private String email;
-    private Set<String> role;
     @NotBlank
     @Size(min = 8, max = 40)
     private String password;
+    private Set<String> role;
 }

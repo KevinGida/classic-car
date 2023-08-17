@@ -1,6 +1,5 @@
 package com.gida.classicCarserver.user.model;
 
-import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 @Table(schema = "userschema", name = "Roles")
