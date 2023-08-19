@@ -5,6 +5,7 @@ import com.gida.classicCarserver.car.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import java.util.List;
 import java.util.UUID;
 
@@ -20,7 +21,7 @@ public class CarService {
     }
 
     //GET
-    public Car findById(UUID id) {
+    public Car findById(Long id) {
         return repository.findById(id).get();
     }
 
@@ -30,7 +31,7 @@ public class CarService {
     }
 
     //PUT
-    public Car update(Car car, UUID id) {
+    public Car update(Car car, Long id) {
         Car carToUpdate = repository.findById(id).get();
         carToUpdate.setManufacturer(car.getManufacturer());
         carToUpdate.setModel(car.getModel());
@@ -47,8 +48,12 @@ public class CarService {
     }
 
     //DELETE
-    public void delete(UUID id) {
+    public void delete(Long id) {
         repository.deleteById(id);
+    }
+
+    public List<Car> isSold (boolean bool) {
+        return repository.findBySold(bool);
     }
 
 }

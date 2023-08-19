@@ -1,10 +1,14 @@
 package com.gida.classicCarserver.car.service;
 
+import com.cloudinary.Cloudinary;
 import com.gida.classicCarserver.car.model.Images;
+import com.gida.classicCarserver.car.repository.CarRepository;
 import com.gida.classicCarserver.car.repository.ImageRepository;
+import org.apache.tomcat.util.http.fileupload.FileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -16,25 +20,33 @@ import java.util.List;
 public class ImageService {
 
     @Autowired
-    ImageRepository repository;
+    CarRepository carRepository;
 
-    public void upload(MultipartFile imageFile, String id) throws IOException {
-        String PATH = "C:\\Users\\Kevin Gida\\salt\\ClassicCar\\classic_car\\images\\";
-        String fullPath = PATH + imageFile.getOriginalFilename();
+    @Autowired
+    ImageRepository imageRepository;
+
+    @Autowired
+    Cloudinary cloudinary;
+
+
+    public void upload(MultipartFile imageFile, Long carId) throws IOException {
+        String imageURL = cloudinary.uploader()
+                .upload(imageFile.getBytes(),
+                        Map.of("public_id", UUID.randomUUID().toString()))
+                .get("url")
+                .toString();
         Images image = new Images();
-        image.setCarId(id);
         image.setType(imageFile.getContentType());
-        image.setPath(fullPath);
-
-        imageFile.transferTo(new File(fullPath));
-        repository.save(image);
+        image.setPath(imageURL);
+        image.setCar(carRepository.findById(carId).get());
+        imageRepository.save(image);
     }
 
-    public void uploadImages(MultipartFile[] files, String id){
+    public void uploadImages(MultipartFile[] files, Long carId){
         Arrays.stream(files)
                 .forEach(file -> {
                     try {
-                        upload(file, id);
+                        upload(file, carId);
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -42,19 +54,17 @@ public class ImageService {
     }
 
     public byte[] downloadImages(Long id) throws IOException {
-        Optional<Images> image = repository.findById(id);
+        Optional<Images> image = imageRepository.findById(id);
         String fullPath = image.get().getPath();
         return Files.readAllBytes(new File(fullPath).toPath());
     }
 
-    public List<Object> getImageByCarId(String carId) {
-        List<Images> images = repository.findByCarId(carId);
-        List<Object> path = new ArrayList<>();
-        images.forEach(image -> path.add(image.getPath()));
-        return path;
-    }
     public List<Images> findALl() {
-        return repository.findAll();
+        return imageRepository.findAll();
+    }
+
+    public List<Images> findByCarId(Long carId) {
+        return imageRepository.findByCarId(carId);
     }
 
 

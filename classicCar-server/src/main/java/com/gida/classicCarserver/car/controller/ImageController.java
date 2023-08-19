@@ -12,20 +12,26 @@ import java.io.IOException;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/image")
+@RequestMapping("/images")
 public class ImageController {
 
     @Autowired
     ImageService imageService;
+
 
     @GetMapping
     public ResponseEntity getAllImages() {
         return ResponseEntity.ok(imageService.findALl());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity getAllImagesByCarId(@PathVariable("id") Long carId) {
+        return ResponseEntity.ok(imageService.findByCarId(carId));
+    }
+
     @PostMapping("/upload/{id}")
-    public void uploadImages(@RequestParam("image")MultipartFile[] files,@PathVariable("id") String id) {
-        imageService.uploadImages(files, id);
+    public void uploadImages(@RequestParam("image")MultipartFile[] files,@PathVariable("id") Long carId) {
+        imageService.uploadImages(files, carId);
     }
 
     @GetMapping("/download/{id}")
@@ -36,9 +42,5 @@ public class ImageController {
                 .body(image);
     }
 
-    @GetMapping("/get/{id}")
-    public ResponseEntity downloadImageByCarId (@PathVariable("id") String id) {
-        return ResponseEntity.ok(imageService.getImageByCarId(id));
-    }
 
 }

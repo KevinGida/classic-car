@@ -3,6 +3,8 @@ package com.gida.classicCarserver.car.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.UUID;
+
 @Entity
 @Table(schema = "classiccarschema", name = "CarPicture")
 @Builder
@@ -15,9 +17,11 @@ import lombok.*;
 public class Images {
 
     @Id
-     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String carId;
     private String type;
     private String path;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "car_id")
+    private Car car;
 }

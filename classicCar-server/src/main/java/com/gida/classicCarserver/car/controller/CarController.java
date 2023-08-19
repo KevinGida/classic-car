@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -23,8 +24,13 @@ public class CarController {
     }
 
     @GetMapping("/{id}")
-    public Car getCarById(@PathVariable("id") UUID id) {
+    public Car getCarById(@PathVariable("id") Long id) {
         return carService.findById(id);
+    }
+
+    @GetMapping("/sold/{bool}")
+    public List<Car> getSoldCars(@PathVariable("bool")boolean bool) {
+        return carService.isSold(bool);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
@@ -33,13 +39,22 @@ public class CarController {
         return carService.create(car);
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/cars")
+    public String newCars(@RequestBody Car[] cars) {
+        Arrays.stream(cars).forEach(car -> newCar(car));
+        return "done";
+    }
+
     @PutMapping("/{id}")
-    public Car updateCar(@RequestBody Car car, @PathVariable("id") UUID id) {
+    public Car updateCar(@RequestBody Car car, @PathVariable("id") Long id) {
         return carService.update(car, id);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCar(@PathVariable UUID id) {
+    public void deleteCar(@PathVariable Long id) {
         carService.delete(id);
     }
+
+
 }
