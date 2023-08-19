@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @CrossOrigin
@@ -42,7 +41,7 @@ public class CarController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/cars")
     public String newCars(@RequestBody Car[] cars) {
-        Arrays.stream(cars).forEach(car -> newCar(car));
+        Arrays.stream(cars).forEach(this::newCar);
         return "done";
     }
 

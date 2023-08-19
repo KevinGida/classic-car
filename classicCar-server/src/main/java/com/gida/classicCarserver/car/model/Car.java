@@ -3,8 +3,6 @@ package com.gida.classicCarserver.car.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
-
 @Entity
 @Table(schema = "classiccarschema", name = "CarDetail")
 @Setter

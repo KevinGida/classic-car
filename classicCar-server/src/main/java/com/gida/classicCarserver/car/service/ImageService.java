@@ -4,7 +4,6 @@ import com.cloudinary.Cloudinary;
 import com.gida.classicCarserver.car.model.Images;
 import com.gida.classicCarserver.car.repository.CarRepository;
 import com.gida.classicCarserver.car.repository.ImageRepository;
-import org.apache.tomcat.util.http.fileupload.FileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -66,6 +65,4 @@ public class ImageService {
     public List<Images> findByCarId(Long carId) {
         return imageRepository.findByCarId(carId);
     }
-
-
 }
