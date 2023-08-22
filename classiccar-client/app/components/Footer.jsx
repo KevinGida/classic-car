@@ -1,9 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import footer from "../style/footer.module.css";
-import Logo from "../asset/Logo.svg";
-import Instagram from "../asset/icons8-instagram-old-50.png";
-import Facebook from "../asset/icons8-facebook-50.png";
 
 const Footer = () => {
   return (
@@ -13,8 +10,10 @@ const Footer = () => {
           <div className={footer.detail}>
             <Link href="/">
               <Image
-                src={Logo}
+                src="/Logo.svg"
                 alt="Classic car logo"
+                width={600}
+                height={400}
                 className={footer.logo}
               />
             </Link>
@@ -50,10 +49,20 @@ const Footer = () => {
           </p>
           <div className={footer.social}>
             <Link href="https://www.instagram.com/">
-              <Image src={Instagram} alt="Classic car logo" />
+              <Image
+                src="/icons8-instagram-old-50.png"
+                alt="Classic car logo"
+                width={50}
+                height={50}
+              />
             </Link>
             <Link href="https://www.facebook.com/">
-              <Image src={Facebook} alt="Classic car logo" />
+              <Image
+                src="/icons8-facebook-50.png"
+                alt="Classic car logo"
+                width={50}
+                height={50}
+              />
             </Link>
           </div>
         </div>

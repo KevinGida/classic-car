@@ -2,7 +2,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import nav from "../style/nav.module.css";
-import Logo from "../asset/Logo.svg";
 import { useEffect, useState } from "react";
 
 const Nav = () => {
@@ -24,7 +23,13 @@ const Nav = () => {
       <div className={nav.content}>
         <div className={nav.link}>
           <Link href="/">
-            <Image src={Logo} alt="Classic car logo" className={nav.image} />
+            <Image
+              src="/Logo.svg"
+              alt="Classic car logo"
+              width={600}
+              height={400}
+              className={nav.image}
+            />
           </Link>
         </div>
         <div className={nav.web_list}>

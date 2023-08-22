@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import history from "../style/history.module.css";
-import car from "../asset/image1.png";
 
 const History = ({ heading1, heading2, message }) => {
   return (
@@ -18,7 +17,13 @@ const History = ({ heading1, heading2, message }) => {
         <Link className={history.button} href="/ABOPUT">
           MORE ABOUT US
         </Link>
-        <Image src={car} alt="classic car" className={history.image} />
+        <Image
+          src="/image1.png"
+          alt="classic car"
+          width={600}
+          height={400}
+          className={history.image}
+        />
       </div>
     </div>
   );
