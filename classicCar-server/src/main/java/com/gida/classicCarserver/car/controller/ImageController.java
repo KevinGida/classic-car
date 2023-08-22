@@ -1,4 +1,5 @@
 package com.gida.classicCarserver.car.controller;
+import com.gida.classicCarserver.car.model.Images;
 import com.gida.classicCarserver.car.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 
 @RestController
@@ -20,12 +22,12 @@ public class ImageController {
 
 
     @GetMapping
-    public ResponseEntity getAllImages() {
+    public ResponseEntity<List<Images>> getAllImages() {
         return ResponseEntity.ok(imageService.findALl());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity getAllImagesByCarId(@PathVariable("id") Long carId) {
+    public ResponseEntity<List<Images>> getAllImagesByCarId(@PathVariable("id") Long carId) {
         return ResponseEntity.ok(imageService.findByCarId(carId));
     }
 

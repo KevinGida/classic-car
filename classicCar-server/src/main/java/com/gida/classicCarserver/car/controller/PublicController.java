@@ -1,6 +1,7 @@
 package com.gida.classicCarserver.car.controller;
 
 import com.gida.classicCarserver.car.model.Car;
+import com.gida.classicCarserver.car.model.Images;
 import com.gida.classicCarserver.car.service.CarService;
 import com.gida.classicCarserver.car.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class PublicController {
     }
 
     @GetMapping("/images/{id}")
-    public ResponseEntity getAllImagesByCarId(@PathVariable("id") Long carId) {
+    public ResponseEntity<List<Images>> getAllImagesByCarId(@PathVariable("id") Long carId) {
         return ResponseEntity.ok(imageService.findByCarId(carId));
     }
 
