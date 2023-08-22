@@ -1,0 +1,14 @@
+.container {
+  width: 100%;
+  height: 15vh;
+  background-color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+}
+
+.container * {
+  color: #000814;
+  font-weight: 400;
+}

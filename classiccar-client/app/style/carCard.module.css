@@ -1,0 +1,10 @@
+.container {
+  width: 100%;
+  aspect-ratio: 6/4;
+}
+
+.image {
+  height: 100%;
+  width: 100%;
+  border-radius: 2%;
+}

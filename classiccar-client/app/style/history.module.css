@@ -1,0 +1,47 @@
+.container {
+  box-sizing: border-box;
+  height: 100vh;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.content {
+  color: #000814;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 15rem;
+  height: 100%;
+}
+
+.image {
+  height: 20rem;
+  width: auto;
+  aspect-ratio: 21/9;
+}
+
+.title {
+  text-align: center;
+  margin: 4rem auto 0 auto;
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 0;
+}
+
+.message {
+  padding: 0 15rem;
+  margin: 0;
+}
+
+.button {
+  text-decoration: none;
+  color: #000814;
+  padding: 0.2rem 0.5rem;
+  border-bottom: 2px solid #000814;
+}
+
+.button:hover {
+  color: gray;
+  border-bottom: 2px solid gray;
+}

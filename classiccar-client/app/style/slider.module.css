@@ -1,0 +1,61 @@
+.container {
+  width: 100%;
+  height: 90vh;
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  width: 85%;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+.left,
+.right {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  font-size: 4rem;
+  color: white;
+  z-index: 1;
+  cursor: pointer;
+  transition: ease-in-out 0.3s;
+  height: 100%;
+  justify-content: center;
+  padding: 15% 1rem;
+  transition: ease-in-out 0.3s;
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  right: 0rem;
+}
+
+.left:hover,
+.right:hover {
+  font-size: 5rem;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.dotContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.dot {
+  margin: 0 3px;
+  cursor: pointer;
+  font-size: 2rem;
+}

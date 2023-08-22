@@ -1,0 +1,21 @@
+.container {
+  width: 100%;
+  height: 300vh;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #eee;
+}
+
+.detail {
+  width: 100%;
+  height: 100%;
+}
+
+.detail:nth-child(2) {
+  background-color: white;
+}

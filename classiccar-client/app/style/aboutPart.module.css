@@ -1,0 +1,35 @@
+.part {
+  width: 100%;
+  height: 100%;
+  padding: 4rem 10rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.title {
+  margin: 0;
+  padding: 0;
+  font-size: 3rem;
+}
+
+.button {
+  background-color: gray;
+  height: 3rem;
+  width: 10rem;
+  margin: 2rem 0;
+  border-radius: 5%;
+  transition: 0.3s ease-in-out;
+  border: none;
+}
+
+.button * {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+.button:hover {
+  background-color: #000814;
+  cursor: pointer;
+}
