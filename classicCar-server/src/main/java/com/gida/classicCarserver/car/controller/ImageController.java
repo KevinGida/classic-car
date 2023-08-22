@@ -41,6 +41,4 @@ public class ImageController {
                 .contentType(MediaType.valueOf("image/jpeg"))
                 .body(image);
     }
-
-
 }
