@@ -25,7 +25,7 @@ public class Car {
      private String origin;
      private int horsepower;
      private int price;
-     @Column(columnDefinition = "TEXT")
+     @Column(columnDefinition = "text")
      private String detail;
      private boolean sold = false;
 

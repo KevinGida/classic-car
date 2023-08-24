@@ -1,8 +1,5 @@
-package com.gida.classicCarserver.user.controller;
+package com.gida.classicCarserver.user.auth;
 
-import com.gida.classicCarserver.user.auth.AuthenticationRequest;
-import com.gida.classicCarserver.user.auth.AuthenticationResponse;
-import com.gida.classicCarserver.user.auth.RegisterRequest;
 import com.gida.classicCarserver.user.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
