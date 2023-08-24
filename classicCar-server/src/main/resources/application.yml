@@ -2,8 +2,8 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/classiccar
     driver-class-name: org.postgresql.Driver
-    username: postgres
-    password: postgres
+    username: ${postgres.username}
+    password: ${postgres.password}
   jpa:
     hibernate:
       ddl-auto: update
