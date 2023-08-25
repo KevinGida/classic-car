@@ -1,34 +1,29 @@
-export const getAuthToken = () => {
-  return window.localStorage.getItem("auth_token");
-};
+import axios from "axios";
+import Cookies from "js-cookie";
 
-export const setAuthToken = (token) => {
-  window.localStorage.setItem("auth_token", token);
-};
+const jwt_secret = process.env.jwt_secret;
 
-export async function GetAllCars() {
-  let header = {};
-  if (getAuthToken() !== null && getAuthToken() !== "null") {
-    header = { Authorization: `Bearer ${getAuthToken()}` };
+export function checkJwt() {}
+
+export async function login(payload) {
+  try {
+    const response = await axios.post(
+      "http://localhost:8080/api/auth/authenticate",
+      payload
+    );
+    const token = await response.data.token;
+
+    Cookies.set("token", token, {
+      expires: 7,
+      sameSite: "strict",
+      secure: true,
+    });
+  } catch (e) {
+    console.log(e.message);
   }
-  const response = await fetch(`http://localhost:8080/cars`, {
-    method: "get",
-    headers: header,
-  });
-  const result = await response.json();
-  return result;
 }
 
-export async function login(username, password) {
-  fetch(`http://localhost:8080/user/login`, {
-    method: "post",
-    headers: {
-      Accept: "application/json, text/plain, */*",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      login: username,
-      password: password,
-    }),
-  });
+export async function GET() {
+  const cookieStore = Cookies();
+  const token = cookieStore.get("token");
 }

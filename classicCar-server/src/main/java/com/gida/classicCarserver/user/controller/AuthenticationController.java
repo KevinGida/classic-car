@@ -1,14 +1,15 @@
-package com.gida.classicCarserver.user.auth;
+package com.gida.classicCarserver.user.controller;
 
+import com.gida.classicCarserver.user.auth.AuthenticationRequest;
+import com.gida.classicCarserver.user.auth.AuthenticationResponse;
+import com.gida.classicCarserver.user.auth.RegisterRequest;
 import com.gida.classicCarserver.user.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4000")
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
 public class AuthenticationController {
