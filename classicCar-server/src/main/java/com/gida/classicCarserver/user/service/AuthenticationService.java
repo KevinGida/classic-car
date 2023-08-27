@@ -53,6 +53,10 @@ public class AuthenticationService {
         return AuthenticationResponse
                 .builder()
                 .token(jwtToken)
+                .firstname(user.getFirstname())
+                .lastname(user.getLastname())
+                .username(user.getUsername())
+                .role(user.getRole().toString())
                 .build();
     }
 }
