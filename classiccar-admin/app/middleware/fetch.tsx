@@ -1,12 +1,11 @@
 import axios from "axios";
-import { sign } from "jsonwebtoken";
 import { NextResponse } from "next/server";
 import Cookies from "js-cookie";
-import { serialize } from "cookie";
 
 const MAX_AGE = 60 * 60 * 24 * 30;
+const secret = process.env.NEXT_PUBLIC_JWT_SECRET || "";
 
-export async function login(payload: Object) {
+export async function Login(payload: Object) {
   try {
     const { data } = await axios.post(
       "http://localhost:8080/api/auth/authenticate",
@@ -21,16 +20,16 @@ export async function login(payload: Object) {
           message: "Unauthorized",
         },
         {
-          status: 403,
+          status: 401,
         }
       );
     }
 
     Cookies.set("dbid", dbid, {
-      expires: MAX_AGE,
-      sameSite: "Strict",
-      path: "/",
+      expires: 7,
     });
+
+    await axios.post("/api/auth/login", payload);
 
     const response = {
       message: "Authenticated!",
@@ -48,5 +47,34 @@ export async function login(payload: Object) {
         status: 403,
       }
     );
+  }
+}
+
+export async function GetAllCars() {
+  const token = Cookies.get("dbid");
+
+  if (!token) {
+    return NextResponse.json(
+      {
+        message: "Unauthorized",
+      },
+      {
+        status: 401,
+      }
+    );
+  }
+
+  try {
+    const contacts = await axios.get("http://localhost:8080/admin/allCars", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Access-Control-Allow-Origin": "*",
+      },
+    });
+    console.log(contacts);
+
+    return contacts;
+  } catch (e) {
+    console.log(e);
   }
 }

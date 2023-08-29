@@ -27,7 +27,6 @@ export default function DashboardLayout({
         return;
       }
 
-      // if the error did not happen, if everything is alright
       setIsSuccess(true);
     })();
   }, [push]);

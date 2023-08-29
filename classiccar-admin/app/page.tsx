@@ -2,7 +2,7 @@
 
 import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
-import { login } from "./middleware/fetch";
+import { Login } from "./middleware/fetch";
 
 export default function Home() {
   const { push } = useRouter();
@@ -16,8 +16,7 @@ export default function Home() {
     };
 
     try {
-      const data = await login(payload);
-
+      Login(payload);
       push("/dashboard");
     } catch (e) {
       const error = e as AxiosError;

@@ -20,8 +20,7 @@ export async function GET() {
 
   const { value } = token;
 
-  // Always check this
-  const secret = process.env.JWT_SECRET || "";
+  const secret = process.env.NEXT_PUBLIC_JWT_SECRET || "";
 
   try {
     verify(value, secret);
